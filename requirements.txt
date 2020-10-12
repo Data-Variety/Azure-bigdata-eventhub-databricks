@@ -1,8 +1,11 @@
 # for databricks
-pyspark>=3.0.0
+pyspark
 
 # for Azure Event Hub
-
+azure-eventhub
 
 # for CosmosDB
+azure-cosmos
 
+# for cli
+azure-cli>=2.12.1
