@@ -1,0 +1,8 @@
+# for databricks
+pyspark
+
+# for Azure Event Hub
+
+
+# for CosmosDB
+
