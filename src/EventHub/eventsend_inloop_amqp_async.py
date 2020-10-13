@@ -1,4 +1,7 @@
 import asyncio
+from random import randint
+from time import sleep
+
 from azure.eventhub.aio import EventHubProducerClient
 from azure.eventhub import EventData
 
@@ -15,14 +18,22 @@ async def send_once():
 
     async with client:
         event_data = await client.create_batch()
-        event_data.add(EventData('{"film":"Witcher", "rank": "5"}'))
-        event_data.add(EventData('{"film":"Witcher", "rank": "6"}'))
-        event_data.add(EventData('{"film":"Ponies", "rank": "5"}'))
-        event_data.add(EventData('{"film":"Capo", "rank": "4"}'))
-        event_data.add(EventData('{"film":"Witcher", "rank": "5"}'))
+
+        can_add = True
+        while can_add:
+            try:
+                event_data.add(EventData('{"film":"Witcher", "rank": "5"}'))
+            except ValueError:
+                can_add = False
+
         await client.send_batch(event_data)
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(send_once())
-    print('Event published!')
+
+    i = 1
+    while i <= 10:
+        loop.run_until_complete(send_once())
+        print('Event published! {} time'.format(str(i)))
+        i += 1
+        sleep(randint(1,10))

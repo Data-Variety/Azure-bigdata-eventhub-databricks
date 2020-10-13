@@ -1,6 +1,6 @@
 from azure.eventhub import EventHubProducerClient, EventData
 
-connection_str = 'Endpoint=sb://przemek-eventhub.servicebus.windows.net/;SharedAccessKeyName=SendHubEvents;SharedAccessKey=4uy4lmvMNKuqT99N0WUnDo0RbRa/7jVIIHwQ14FdP5M=;EntityPath=przemek-hub'
+connection_str = 'Endpoint=sb://'
 consumer_group = '$Default'
 eventhub_name = 'przemek-hub'
 
